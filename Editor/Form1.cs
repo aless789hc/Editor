@@ -1,5 +1,7 @@
-using System.Xml.Linq;
+using Microsoft.VisualBasic.Logging;
 using System.Xml;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 namespace Editor
 {
     public partial class frmEditor : Form
@@ -51,20 +53,32 @@ namespace Editor
                 path = sfdEditor.FileName;
                 using (StreamWriter archivo = new StreamWriter(path)) // la ruta del archivo que voy a guardar
                 { archivo.Write(rtbEditor.Text);
-                    archivo.Write(rtbEditor.Font);
-                    archivo.Write(rtbEditor.ForeColor);
-                    archivo.Write(rtbEditor.BackColor);
+                    xml();
                 }// le voy a mandar al archuvo lo que tengo escrito en el rtb
-                xml();
+                
 
             }
         }
         private void xml()
         {
+            // ftdEditor (FontDialog)
+            // solo es una ventana para elegir
+
+            //cldEditor(ColorDialog)
+            //solo es una ventana para seleccionar color
+
+           // rtbEditor
+           // es el que realmente tiene aplicados los cambio
             XElement xml = new XElement("Caracteristicas");
             xml.Add(
-            new XElement("Color", cldEditor.Color),
-                    new XElement("Fuente", ftdEditor.Font));
+            new XElement("Fuente",
+                new XAttribute("Tipo", rtbEditor.Font.Name),// lo separo asi si quiero tener las caracteristicas por separado
+                new XAttribute("Tamaño", rtbEditor.Font.Size),
+                new XAttribute("Estilo", rtbEditor.Font.Style.ToString())),
+
+            new XElement("Color",
+                    new XAttribute("Fondo", rtbEditor.BackColor.ToString()),
+                    new XAttribute("Fuente", rtbEditor.ForeColor.ToString())));
 
 
             try
@@ -94,7 +108,20 @@ namespace Editor
         {
             guardar();
         }
+        public void cargarXML() {
+            if (File.Exists("Archivo.xml")) { // comprobar si es xml
+                XElement xml = XElement.Load("Archivo.xml"); //lo convierto en objeto para poder cceder a sus nodos
+                String nombre = xml.Element("Fuente").Attribute("nombre").Value;
+                int tamaño = int.Parse(xml.Element("Fuente").Attribute("tamaño").Value);
+                String estilo = xml.Element("Fuente").Attribute("estilo").Value;
+                int colorTexto = int.Parse(xml.Element("Color").Attribute("Fuente").Value);
+                int colorFondo = int.Parse(xml.Element("Color").Attribute("Fondo").Value);
 
+                rtbEditor.Font = new Font(nombre, tamaño, estilo);
+                rtbEditor.ForeColor = Color.FromArgb(colorTexto);
+                rtbEditor.BackColor=Color.FromArgb(colorFondo);
+            }
+        }
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ofpEditor.ShowDialog() == DialogResult.OK)
@@ -102,9 +129,7 @@ namespace Editor
                 if (File.Exists(ofpEditor.FileName))
                 { // si la ruta seleccionada existe
                     rtbEditor.Text = File.ReadAllText(ofpEditor.FileName);
-                    
-
-
+                    cargarXML();
                 }
             }
         }
