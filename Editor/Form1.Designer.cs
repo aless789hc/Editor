@@ -39,6 +39,7 @@
             editarToolStripMenuItem = new ToolStripMenuItem();
             colorToolStripMenuItem = new ToolStripMenuItem();
             fuenteToolStripMenuItem = new ToolStripMenuItem();
+            fondoToolStripMenuItem = new ToolStripMenuItem();
             ofpEditor = new OpenFileDialog();
             sfdEditor = new SaveFileDialog();
             stsEditor = new StatusStrip();
@@ -46,7 +47,6 @@
             ftdEditor = new FontDialog();
             cldEditor = new ColorDialog();
             rtbEditor = new RichTextBox();
-            fondoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             stsEditor.SuspendLayout();
             SuspendLayout();
@@ -71,41 +71,42 @@
             // nuevoToolStripMenuItem
             // 
             nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            nuevoToolStripMenuItem.Size = new Size(187, 26);
+            nuevoToolStripMenuItem.Size = new Size(224, 26);
             nuevoToolStripMenuItem.Text = "Nuevo";
             nuevoToolStripMenuItem.Click += nuevoToolStripMenuItem_Click;
             // 
             // abrirToolStripMenuItem
             // 
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(187, 26);
+            abrirToolStripMenuItem.Size = new Size(224, 26);
             abrirToolStripMenuItem.Text = "Abrir";
             abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
             // 
             // guardarToolStripMenuItem
             // 
             guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(187, 26);
+            guardarToolStripMenuItem.Size = new Size(224, 26);
             guardarToolStripMenuItem.Text = "Guardar";
             guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
             // 
             // guardarComoToolStripMenuItem
             // 
             guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            guardarComoToolStripMenuItem.Size = new Size(187, 26);
+            guardarComoToolStripMenuItem.Size = new Size(224, 26);
             guardarComoToolStripMenuItem.Text = "Guardar como";
             guardarComoToolStripMenuItem.Click += guardarComoToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(184, 6);
+            toolStripSeparator1.Size = new Size(221, 6);
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(187, 26);
+            salirToolStripMenuItem.Size = new Size(224, 26);
             salirToolStripMenuItem.Text = "Salir";
+            salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
             // editarToolStripMenuItem
             // 
@@ -117,16 +118,23 @@
             // colorToolStripMenuItem
             // 
             colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            colorToolStripMenuItem.Size = new Size(224, 26);
+            colorToolStripMenuItem.Size = new Size(136, 26);
             colorToolStripMenuItem.Text = "Color";
             colorToolStripMenuItem.Click += colorToolStripMenuItem_Click;
             // 
             // fuenteToolStripMenuItem
             // 
             fuenteToolStripMenuItem.Name = "fuenteToolStripMenuItem";
-            fuenteToolStripMenuItem.Size = new Size(224, 26);
+            fuenteToolStripMenuItem.Size = new Size(136, 26);
             fuenteToolStripMenuItem.Text = "Fuente";
             fuenteToolStripMenuItem.Click += fuenteToolStripMenuItem_Click;
+            // 
+            // fondoToolStripMenuItem
+            // 
+            fondoToolStripMenuItem.Name = "fondoToolStripMenuItem";
+            fondoToolStripMenuItem.Size = new Size(136, 26);
+            fondoToolStripMenuItem.Text = "Fondo";
+            fondoToolStripMenuItem.Click += fondoToolStripMenuItem_Click;
             // 
             // ofpEditor
             // 
@@ -163,13 +171,6 @@
             rtbEditor.TabIndex = 2;
             rtbEditor.Text = "";
             rtbEditor.TextChanged += rtbEditor_TextChanged;
-            // 
-            // fondoToolStripMenuItem
-            // 
-            fondoToolStripMenuItem.Name = "fondoToolStripMenuItem";
-            fondoToolStripMenuItem.Size = new Size(224, 26);
-            fondoToolStripMenuItem.Text = "Fondo";
-            fondoToolStripMenuItem.Click += fondoToolStripMenuItem_Click;
             // 
             // frmEditor
             // 
